@@ -28,5 +28,5 @@
 @import url(../blocks/popup/__background/popup__background.css);
 @import url(../blocks/popup/__exit/popup__exit.css);
 @import url(../blocks/popup/__text/popup__text.css);
-@import url(../blocks/popup/__text/_job/popup__text_job.css);
-@import url(../blocks/popup/__text/_name/popup__text_name.css);
+@import url(../blocks/popup/__text/_type/_job/popup__text_type_job.css);
+@import url(../blocks/popup/__text/_type/_name/popup__text_type_name.css);

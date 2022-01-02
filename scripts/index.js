@@ -3,8 +3,8 @@ let jobs = document.querySelector('.profile__text');
 let buttonEditProfile = document.querySelector('.profile__edit-button');
 let popup = document.querySelector('.popup');
 let form = document.querySelector('.popup__container')
-let popupJob = document.querySelector('.popup__text_job')
-let popupName = document.querySelector('.popup__text_name')
+let popupJob = document.querySelector('.popup__text_type_job')
+let popupName = document.querySelector('.popup__text_type_name')
 let buttonExitEditProfile = document.querySelector('.popup__exit');
 let openedPopup = 'popup_opened';
 
