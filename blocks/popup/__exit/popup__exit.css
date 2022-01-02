@@ -5,11 +5,16 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
+  transition: opacity .3s ease-in-out;
+  background-image: url(../../../images/X.svg);
+  background-color: #000;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 0;
 }
 
 .popup__exit:hover {
   opacity: 0.6;
-  transition: opacity .3s ease-in-out;
 }
 
 @media screen and (max-width: 950px) {

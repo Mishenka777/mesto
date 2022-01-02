@@ -3,32 +3,20 @@ let jobs = document.querySelector('.profile__text');
 let buttonEditProfile = document.querySelector('.profile__edit-button');
 let popup = document.querySelector('.popup');
 let form = document.querySelector('.popup__container')
-let popupJob = document.querySelector('.popup__job')
-let popupName = document.querySelector('.popup__name')
+let popupJob = document.querySelector('.popup__text_job')
+let popupName = document.querySelector('.popup__text_name')
 let buttonExitEditProfile = document.querySelector('.popup__exit');
 let openedPopup = 'popup_opened';
-let useLike = document.querySelectorAll('.element__button');
-let likeWorked = 'element__button_black';
 
-for (let i = 0; i < useLike.length; i ++) {
-  useLike[i].addEventListener('click', function () {
-  useLike[i].classList.toggle(likeWorked);
-  }) 
-};
-
-buttonEditProfile.addEventListener('click', function () {
-  openPopup ();
-});
+buttonEditProfile.addEventListener('click', openPopup); 
 
 function openPopup () {
-  popup.classList.add(openedPopup);
   popupName.value = names.textContent;
   popupJob.value = jobs.textContent;
+  popup.classList.add(openedPopup);
 }
 
-buttonExitEditProfile.addEventListener('click', function () {
-  closePopup (); 
-});
+buttonExitEditProfile.addEventListener('click', closePopup);
 
 function closePopup () {
   popup.classList.remove(openedPopup);
@@ -38,7 +26,7 @@ function popupPush(evt) {
   evt.preventDefault();
   names.textContent = popupName.value;
   jobs.textContent = popupJob.value;
-  popup.classList.remove('popup_opened');
+  closePopup ();
 }
 
 form.addEventListener('submit', popupPush);
