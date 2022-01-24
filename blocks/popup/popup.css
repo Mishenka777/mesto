@@ -1,7 +1,10 @@
 .popup {
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear
 }
-
+/* 
 @media screen and (max-width: 950px) {
   .popup {
     max-width: 581px;
@@ -14,4 +17,4 @@
     max-width: 282px;
     
   }
-}
+} */
