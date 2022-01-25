@@ -86,8 +86,8 @@ return element;
 }
 
 function renderCard(cardItems) {
- const element = createСard(cardItems);
- elementSection.prepend(element);
+  const element = createСard(cardItems);
+  elementSection.prepend(element);
 }
 
 initialCards.forEach(renderCard);
