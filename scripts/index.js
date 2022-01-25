@@ -114,7 +114,9 @@ buttonExit.forEach(exit => {
 
 function closePopup () {
   const openPopup = document.querySelector('.popup_opened')
-  openPopup.classList.remove(openedPopup);
+  if(openPopup) {
+    openPopup.classList.remove(openedPopup);
+  }
 };
 
 function popupPush(evt) {
