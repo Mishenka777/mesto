@@ -11,9 +11,10 @@ const popupJob = document.querySelector('.popup__text_type_job');
 const popupName = document.querySelector('.popup__text_type_name');
 const popupTitle = document.querySelector('.popup__text_type_title');
 const popupImage = document.querySelector('.popup__text_type_image');
-const buttonExit = document.querySelectorAll('.popup__exit');
+const buttonElementExit = popupElementBlock.querySelector('.popup__exit');
+const buttonProfileExit = popupProfileBlock.querySelector('.popup__exit');
+const buttonImageExit = popupImageBlock.querySelector('.popup__exit');
 const openedPopup = 'popup_opened';
-const openPopup = document.querySelector('.popup_opened');
 const elementSection = document.querySelector('.elements');
 const templateElement = document.querySelector('#element').content;
 const initialCards = [
@@ -42,18 +43,6 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-function handleFormElementPush (evt){
-  evt.preventDefault();
-  const newCard = {
-    name: popupTitle.value,
-    link: popupImage.value
-  };
-  renderCard(newCard);
-  closePopup();
-}
-
-formElement.addEventListener('submit', handleFormElementPush);
 const popupImagephoto = document.querySelector('.popup__image');
 const popupImagetitle = document.querySelector('.popup__image-title');
 
@@ -71,61 +60,72 @@ function createСard(cardItems) {
   });
   deleteElement.addEventListener('click', (evt) => {
     evt.target.closest('.element').remove();
-});
-
-function openPopupImage () {
-  popupImagetitle.textContent = cardItems.name;
-  popupImagephoto.alt = cardItems.name;
-  popupImagephoto.src = cardItems.link;
-  openPopupArticle(popupImageBlock);
-}
-
-cardPhoto.addEventListener('click', openPopupImage);
-
-return element;
+  });
+  function openPopupImage () {
+    popupImagetitle.textContent = cardItems.name;
+    popupImagephoto.alt = cardItems.name;
+    popupImagephoto.src = cardItems.link;
+    openPopup(popupImageBlock);
+  }
+  cardPhoto.addEventListener('click', openPopupImage);
+  return element;
 }
 
 function renderCard(cardItems) {
   const element = createСard(cardItems);
   elementSection.prepend(element);
-}
+};
 
 initialCards.forEach(renderCard);
 
-function openPopupArticle(popup) {
+buttonProfileExit.addEventListener('click', () => {
+  closePopup(popupProfileBlock);
+});
+buttonElementExit.addEventListener('click', () => {
+  closePopup(popupElementBlock);
+});
+buttonImageExit.addEventListener('click', () => {
+  closePopup(popupImageBlock);
+});
+buttonEditProfile.addEventListener('click', openPopupProfile);
+buttonAddElement.addEventListener('click', openPopupElement);
+
+function openPopup(popup) {
   popup.classList.add(openedPopup);
-}
+};
+
+function closePopup(popup) {
+  popup.classList.remove(openedPopup);
+};
 
 function openPopupElement () {
   popupTitle.value = "";
   popupImage.value = "";
-  openPopupArticle(popupElementBlock)
+  openPopup(popupElementBlock)
 };
 
 function openPopupProfile () {
   popupName.value = person.textContent;
   popupJob.value = job.textContent;
-  openPopupArticle(popupProfileBlock)
+  openPopup(popupProfileBlock);
 };
 
-buttonExit.forEach(exit => {
-  exit.addEventListener('click', closePopup)
-})
-
-function closePopup () {
-  const openPopup = document.querySelector('.popup_opened')
-  if(openPopup) {
-    openPopup.classList.remove(openedPopup);
-  }
-};
-
-function popupPush(evt) {
+function handlePopupPush(evt) {
   evt.preventDefault();
   person.textContent = popupName.value;
   job.textContent = popupJob.value;
-  closePopup ();
+  closePopup(popupProfileBlock);
 };
 
-buttonEditProfile.addEventListener('click', openPopupProfile);
-buttonAddElement.addEventListener('click', openPopupElement);
-formProfile.addEventListener('submit', popupPush);
+function handleFormElementPush (evt){
+  evt.preventDefault();
+  const newCard = {
+    name: popupTitle.value,
+    link: popupImage.value
+  };
+  renderCard(newCard);
+  closePopup(popupElementBlock);
+}
+
+formProfile.addEventListener('submit', handlePopupPush);
+formElement.addEventListener('submit', handleFormElementPush);
