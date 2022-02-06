@@ -35,21 +35,58 @@
     </footer>
     <article class="popup popup_profile">
       <div class="popup__background"></div>
-      <form class="popup__container popup__container_type_profile" name="form-edit">
-        <button class="popup__exit" type="button" aria-label="закрыть"></button>
+      <form class="popup__container popup__container_type_profile" name="form-edit" novalidate>
+        <button  class="popup__exit" type="button" aria-label="закрыть">
+        </button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__text popup__text_type_name" type="text" name="human">
-        <input class="popup__text popup__text_type_job" type="text" name="job">
+        <input 
+          required
+          class="popup__text popup__text_type_name"
+          minlength="2"
+          maxlength="40"
+          type="text"
+          name="human"
+          id="human-card"
+        >
+        <span id="human-card-error" class="error"></span>
+        <input 
+          required
+          minlength="2"
+          maxlength="200"
+          class="popup__text popup__text_type_job" 
+          type="text" 
+          name="job"
+          id="job-card"
+        >
+        <span id="job-card-error" class="error"></span>
         <button class="popup__save" type="submit" aria-label="сохранить">Сохранить</button>
       </form>
     </article>
     <article class="popup popup_element">
       <div class="popup__background"></div>
-      <form class="popup__container popup__container_type_element" name="form-add">
+      <form class="popup__container popup__container_type_element" name="form-add" novalidate>
         <button class="popup__exit" type="button" aria-label="закрыть"></button>
         <h2 class="popup__title">Новое место</h2>
-        <input class="popup__text popup__text_type_title" type="text" name="title" placeholder="Название">
-        <input class="popup__text popup__text_type_image" type="text" name="image" placeholder="Ссылка на картинку">
+        <input 
+          required
+          minlength="2"
+          maxlength="30"
+          class="popup__text popup__text_type_title" 
+          type="text" 
+          name="title" 
+          placeholder="Название"
+          id="title-card"
+        >
+        <span id="title-card-error" class="error"></span>
+        <input 
+          required
+          class="popup__text popup__text_type_image" 
+          type="url" 
+          name="image" 
+          placeholder="Ссылка на картинку"
+          id="image-card"
+        >
+        <span id="image-card-error" class="error"></span>
         <button class="popup__save" type="submit" aria-label="создать">Создать</button>
       </form>
     </article>
@@ -72,6 +109,7 @@
     </article>
   </template>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>

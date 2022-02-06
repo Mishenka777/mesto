@@ -15,8 +15,10 @@ const buttonElementExit = popupElementBlock.querySelector('.popup__exit');
 const buttonProfileExit = popupProfileBlock.querySelector('.popup__exit');
 const buttonImageExit = popupImageBlock.querySelector('.popup__exit');
 const openedPopup = 'popup_opened';
+const openedImagePopup = 'popup__background';
 const elementSection = document.querySelector('.elements');
 const templateElement = document.querySelector('#element').content;
+const overlayList = document.querySelectorAll('.popup');
 const initialCards = [
   {
     name: 'Архыз',
@@ -90,12 +92,21 @@ buttonImageExit.addEventListener('click', () => {
 buttonEditProfile.addEventListener('click', openPopupProfile);
 buttonAddElement.addEventListener('click', openPopupElement);
 
+function closePopupEsc(evt) { 
+  if (evt.key === 'Escape') {
+    const popupActiv = document.querySelector('.popup_opened');
+    closePopup(popupActiv)
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add(openedPopup);
+  document.addEventListener('keydown', closePopupEsc); 
 };
 
 function closePopup(popup) {
   popup.classList.remove(openedPopup);
+  document.remove.EventListener('keydown', closePopupEsc); 
 };
 
 function openPopupElement () {
@@ -129,3 +140,12 @@ function handleFormElementPush (evt){
 
 formProfile.addEventListener('submit', handlePopupPush);
 formElement.addEventListener('submit', handleFormElementPush);
+
+overlayList.forEach((data) => {
+  data.addEventListener('mousedown', (evt) => {
+    const popupActiv = document.querySelector('.popup_opened');
+    if (evt.target.classList.contains(openedPopup) || (evt.target.classList.contains(openedImagePopup))) {
+      closePopup(popupActiv);
+    }
+  })
+});
