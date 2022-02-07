@@ -15,7 +15,6 @@ const buttonElementExit = popupElementBlock.querySelector('.popup__exit');
 const buttonProfileExit = popupProfileBlock.querySelector('.popup__exit');
 const buttonImageExit = popupImageBlock.querySelector('.popup__exit');
 const openedPopup = 'popup_opened';
-const openedImagePopup = 'popup__background';
 const elementSection = document.querySelector('.elements');
 const templateElement = document.querySelector('#element').content;
 const overlayList = document.querySelectorAll('.popup');
@@ -47,6 +46,7 @@ const initialCards = [
 ];
 const popupImagephoto = document.querySelector('.popup__image');
 const popupImagetitle = document.querySelector('.popup__image-title');
+const saveBtn = formElement.querySelector(".popup__save");
 
 function createСard(cardItems) {
   const element = templateElement.querySelector('.element').cloneNode(true);
@@ -106,7 +106,7 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove(openedPopup);
-  document.remove.EventListener('keydown', closePopupEsc); 
+  document.removeEventListener('keydown', closePopupEsc); 
 };
 
 function openPopupElement () {
@@ -132,8 +132,10 @@ function handleFormElementPush (evt){
   evt.preventDefault();
   const newCard = {
     name: popupTitle.value,
-    link: popupImage.value
+    link: popupImage.value,
   };
+  saveBtn.setAttribute("disabled", "disabled");  
+  saveBtn.classList.add("popup__save_invalid");
   renderCard(newCard);
   closePopup(popupElementBlock);
 }
@@ -143,9 +145,8 @@ formElement.addEventListener('submit', handleFormElementPush);
 
 overlayList.forEach((data) => {
   data.addEventListener('mousedown', (evt) => {
-    const popupActiv = document.querySelector('.popup_opened');
-    if (evt.target.classList.contains(openedPopup) || (evt.target.classList.contains(openedImagePopup))) {
-      closePopup(popupActiv);
+    if (evt.target.classList.contains(openedPopup)) {
+      closePopup(evt.target);
     }
   })
 });
