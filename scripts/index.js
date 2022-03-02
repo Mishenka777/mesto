@@ -84,7 +84,7 @@ function openPopupProfile () {
   popupName.value = person.textContent;
   popupJob.value = job.textContent;
   openPopup(popupProfileBlock);
-  addCardFormValidator.setSubmitButtonState(formProfile);
+  editFormValidator.setSubmitButtonState(formProfile);
 };
 
 export function openPopupImage () {
