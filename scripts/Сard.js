@@ -20,15 +20,15 @@ export class Card {
     return this.element;
   }
 
-   _methodCardImage() {
+  _methodCardImage() {
      this.cardImage = document.querySelector('.popup__image');
      this.cardTitle = document.querySelector('.popup__image-title').textContent = this._name;;
      this.cardImage.src = this._link;
      this.cardImage.alt = this._name;
      openPopupImage();
-   }
+  }
 
-   _setEventListeners() {
+  _setEventListeners() {
     this.uselike = this.element.querySelector('.element__button')
     this.uselike.addEventListener('click', () => {
       this.uselike.classList.toggle('element__button_active');

@@ -1,10 +1,10 @@
- export class FormValidator {
-   constructor(settings, form) {
+export class FormValidator {
+  constructor(settings, form) {
     this._settings = settings;
     this._form = form;
     this._inputs = [...this._form.querySelectorAll(this._settings.inputSelector)];
     this._button = form.querySelector(this._settings.submitButtonSelector) ;
-   }
+  }
    
   enableValidation() {
     this._setEventListeners(this._form)
@@ -25,16 +25,14 @@
     }
   }
 
-  _showError(form, input){
+  _showError(form, input) {
     input.classList.add(this._settings.inputErrorClass);
-    const errorElement = form.querySelector(`#${input.id}-error`);
-    errorElement.textContent = input.validationMessage;
+    form.querySelector(`#${input.id}-error`).textContent = input.validationMessage;
   };
 
-  _hideError(form, input){
+  _hideError(form, input) {
     input.classList.remove(this._settings.inputErrorClass);
-    const errorElement = form.querySelector(`#${input.id}-error`);
-    errorElement.textContent = "";
+    form.querySelector(`#${input.id}-error`).textContent = "";
   };
 
   setSubmitButtonState(form) {
