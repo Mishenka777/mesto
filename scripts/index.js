@@ -50,7 +50,6 @@ const formsValidateConfig = {
   formSelector: '.popup__container',
   inputSelector: '.popup__text',
   inputErrorClass: 'popup__text_state_invalid',
-  errorClass: 'error_state_visible',
   submitButtonSelector: '.popup__save',
   submitButtonErrorClass: 'popup__save_invalid',
 };
@@ -85,6 +84,7 @@ function openPopupProfile () {
   popupName.value = person.textContent;
   popupJob.value = job.textContent;
   openPopup(popupProfileBlock);
+  addCardFormValidator.setSubmitButtonState(formProfile);
 };
 
 export function openPopupImage () {
