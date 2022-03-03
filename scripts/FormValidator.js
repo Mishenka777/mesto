@@ -3,17 +3,17 @@ export class FormValidator {
     this._settings = settings;
     this._form = form;
     this._inputs = [...this._form.querySelectorAll(this._settings.inputSelector)];
-    this._button = form.querySelector(this._settings.submitButtonSelector) ;
+    this._button = form.querySelector(this._settings.submitButtonSelector);
   }
    
   enableValidation() {
     this._setEventListeners(this._form)
   }
 
-  _setEventListeners(form) {
+  _setEventListeners() {
     this._inputs.forEach(input => input.addEventListener('input', () => {
-      this._handleField(form, input)
-      this.setSubmitButtonState(form)
+      this._handleField(this._form, input)
+      this.setSubmitButtonState(this._form)
       })) 
   };
   
@@ -35,9 +35,9 @@ export class FormValidator {
     form.querySelector(`#${input.id}-error`).textContent = "";
   };
 
-  setSubmitButtonState(form) {
-    this._button.disabled = !form.checkValidity()
-    this._button.classList.toggle(this._settings.submitButtonErrorClass, !form.checkValidity())
+  setSubmitButtonState() {
+    this._button.disabled = !this._form.checkValidity()
+    this._button.classList.toggle(this._settings.submitButtonErrorClass, !this._form.checkValidity())
   }
 }
 

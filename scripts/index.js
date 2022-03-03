@@ -53,8 +53,8 @@ const formsValidateConfig = {
   submitButtonSelector: '.popup__save',
   submitButtonErrorClass: 'popup__save_invalid',
 };
-const editFormValidator = new FormValidator(formsValidateConfig, formProfile);
-const addCardFormValidator = new FormValidator(formsValidateConfig, formElement);
+const formEditValidator = new FormValidator(formsValidateConfig, formProfile);
+const cardAddFormValidator = new FormValidator(formsValidateConfig, formElement);
 
 function closePopupEsc(evt) { 
   if (evt.key === 'Escape') {
@@ -77,14 +77,13 @@ function openPopupElement () {
   popupTitle.value = "";
   popupImage.value = "";
   openPopup(popupElementBlock);
-  addCardFormValidator.setSubmitButtonState(formElement);
+  cardAddFormValidator.setSubmitButtonState();
 };
 
 function openPopupProfile () {
   popupName.value = person.textContent;
   popupJob.value = job.textContent;
   openPopup(popupProfileBlock);
-  editFormValidator.setSubmitButtonState(formProfile);
 };
 
 export function openPopupImage () {
@@ -143,5 +142,5 @@ buttonImageExit.addEventListener('click', () => {
 });
 buttonEditProfile.addEventListener('click', openPopupProfile);
 buttonAddElement.addEventListener('click', openPopupElement);
-editFormValidator.enableValidation();
-addCardFormValidator.enableValidation();
+formEditValidator.enableValidation();
+cardAddFormValidator.enableValidation();
