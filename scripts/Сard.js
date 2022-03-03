@@ -1,11 +1,9 @@
-import { openPopupImage } from "./index.js";
+import { openPopupImage, cardImage, cardTitle} from "./index.js";
 export class Card {
   constructor(data, cardTemplateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardTemplateSelector = cardTemplateSelector;
-    this._cardImage = document.querySelector('.popup__image');
-    this._cardTitle = document.querySelector('.popup__image-title');
   }
   
   _getTemplate() {
@@ -23,9 +21,9 @@ export class Card {
   }
 
   _methodCardImage() {
-     this._cardTitle.textContent = this._name;;
-     this._cardImage.src = this._link;
-     this._cardImage.alt = this._name;
+     cardTitle.textContent = this._name;;
+     cardImage.src = this._link;
+     cardImage.alt = this._name;
      openPopupImage();
   }
 

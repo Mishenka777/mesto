@@ -1,5 +1,6 @@
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Сard.js";
+export { cardImage, cardTitle, openPopupImage }
 
 const person = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__text');
@@ -55,6 +56,8 @@ const formsValidateConfig = {
 };
 const formEditValidator = new FormValidator(formsValidateConfig, formProfile);
 const cardAddFormValidator = new FormValidator(formsValidateConfig, formElement);
+const cardImage = document.querySelector('.popup__image');
+const cardTitle = document.querySelector('.popup__image-title');
 
 function closePopupEsc(evt) { 
   if (evt.key === 'Escape') {
@@ -86,7 +89,7 @@ function openPopupProfile () {
   openPopup(popupProfileBlock);
 };
 
-export function openPopupImage () {
+function openPopupImage () {
   openPopup(popupImageBlock);
 }
 
