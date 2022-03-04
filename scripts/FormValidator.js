@@ -12,27 +12,27 @@ export class FormValidator {
 
   _setEventListeners() {
     this._inputs.forEach(input => input.addEventListener('input', () => {
-      this._handleField(this._form, input)
-      this.setSubmitButtonState(this._form)
-      })) 
+      this._handleField(input)
+      this.setSubmitButtonState()
+      }))
   };
   
-  _handleField(form, input) {
+  _handleField(input) {
     if (input.validity.valid) {
-      this._hideError(form, input)
+      this._hideError(input)
     } else {
-      this._showError(form, input)
+      this._showError(input)
     }
   }
 
-  _showError(form, input) {
+  _showError(input) {
     input.classList.add(this._settings.inputErrorClass);
-    form.querySelector(`#${input.id}-error`).textContent = input.validationMessage;
+    this._form.querySelector(`#${input.id}-error`).textContent = input.validationMessage;
   };
 
-  _hideError(form, input) {
+  _hideError(input) {
     input.classList.remove(this._settings.inputErrorClass);
-    form.querySelector(`#${input.id}-error`).textContent = "";
+    this._form.querySelector(`#${input.id}-error`).textContent = "";
   };
 
   setSubmitButtonState() {
