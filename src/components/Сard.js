@@ -1,9 +1,9 @@
-import { openPopupImage, cardImage, cardTitle} from "./index.js";
-export class Card {
-  constructor(data, cardTemplateSelector) {
+export default class Card {
+  constructor(data, cardTemplateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardTemplateSelector = cardTemplateSelector;
+    this._handleCardClick = handleCardClick;
   }
   
   _getTemplate() {
@@ -20,13 +20,6 @@ export class Card {
     return this._element;
   }
 
-  _methodCardImage() {
-     cardTitle.textContent = this._name;;
-     cardImage.src = this._link;
-     cardImage.alt = this._name;
-     openPopupImage();
-  }
-
   _setEventListeners() {
     this.uselike = this._element.querySelector('.element__button')
     this.uselike.addEventListener('click', () => {
@@ -39,7 +32,7 @@ export class Card {
       });
     this.useImage = this._element.querySelector('.element__photo')
     this.useImage.addEventListener('mousedown', () => {
-      this._methodCardImage();
+      this._handleCardClick(this._name, this._link);
     });
   }
 }
