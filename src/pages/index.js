@@ -6,16 +6,10 @@ import {
   initialCards,
   buttonEditProfile,
   buttonAddElement,
-  popupProfileBlock,
-  popupElementBlock,
-  popupImageBlock,
   formProfile,
-  formElement,
+  newCardForm,
   popupJob,
   popupName,
-  popupTitle,
-  popupImage,
-  elementSection,
   person,
   job,
   formsValidateConfig,
@@ -23,15 +17,14 @@ import {
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-
 const formEditValidator = new FormValidator(formsValidateConfig, formProfile);
-const cardAddFormValidator = new FormValidator(formsValidateConfig, formElement);
+const cardAddFormValidator = new FormValidator(formsValidateConfig, newCardForm);
 const popupElement = new PopupWithForm(
-  popupElementBlock,
-  () => {
+  '.popup_element',
+  (data) => {
      const newCard = {
-      name: popupTitle.value,
-      link: popupImage.value
+      name: data.title,
+      link: data.image
      }
      cardList.addItem(renderNewCard(newCard));
      popupElement.close()
@@ -42,12 +35,12 @@ const cardList = new Section({
   renderer: (data) => {
     cardList.addItem(renderNewCard(data));
   }},
-  elementSection
+  '.elements'
 );
-const openPopupImage = new PopupWithImage(popupImageBlock);
+const openPopupImage = new PopupWithImage('.popup_image');
 const userInfo = new UserInfo({ profileName: person, profileJob: job });
 const popupProfile = new PopupWithForm(
-  popupProfileBlock,
+  '.popup_profile',
   (data) => {
      userInfo.setUserInfo(data);
      popupProfile.close()
