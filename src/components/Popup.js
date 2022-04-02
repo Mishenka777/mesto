@@ -3,7 +3,6 @@ export default class Popup {
     this._popup = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
     this._popupExit = this._popup.querySelector('.popup__exit');
-    this._saveButton = this._popup.querySelector('.popup__save')
   }
 
   open() {
@@ -21,15 +20,6 @@ export default class Popup {
       this.close();
     };
   };
-
-  renderLoading(loading) {
-    if (loading) {
-      this._saveButton.textContent = "Сохранение...";
-    }
-    else {
-      this._saveButton.textContent = "Сохранить";
-    }
-  }
 
   setEventListeners() {
     this._popup.addEventListener('mousedown', (evt) => {

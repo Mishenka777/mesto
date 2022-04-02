@@ -43,6 +43,7 @@ Promise.all([api.getProfileData(), api.getInitialCards()])
     userId = data._id;
     newSection.renderItems(cards)
   })
+  .catch(err => console.log(`Ошибка: ${err}`))
 
 const newSection = new Section({
   renderer: (data) => {
@@ -143,8 +144,9 @@ buttonAddElement.addEventListener('click', () => {
 });
 
 buttonEditProfile.addEventListener('click', () => {
-  popupName.value = userInfo.getUserInfo().human;
-  popupJob.value = userInfo.getUserInfo().job
+  const {human, job} = userInfo.getUserInfo()
+  popupName.value = human;
+  popupJob.value = job
   popupProfile.open();
 });
 
