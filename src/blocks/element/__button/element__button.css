@@ -3,9 +3,8 @@
   height: 19px;
   background-color: white;
   background-image: url(../../../images/heart.svg);
-  border: 0;
+  border: none;
   background-repeat: no-repeat;
-  margin: auto 0;
   cursor: pointer;
   transition: opacity .3s ease-in-out;
 }

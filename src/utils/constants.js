@@ -2,10 +2,15 @@ export const buttonEditProfile = document.querySelector('.profile__edit-button')
 export const buttonAddElement = document.querySelector('.profile__add-button');
 export const formProfile = document.querySelector('.popup__container_type_profile');
 export const newCardForm = document.querySelector('.popup__container_type_element');
+export const avatarForm = document.querySelector('.popup__container_type_avatar');
 export const popupJob = document.querySelector('.popup__text_type_job');
 export const popupName = document.querySelector('.popup__text_type_name');
+export const popupChangeAvatar = document.querySelector('.popup__text_type_avatar');
 export const person = document.querySelector('.profile__title');
 export const job = document.querySelector('.profile__text');
+export const avatar = document.querySelector('.profile__photo');
+export const buttonChangeAvatar = document.querySelector('.profile__change-avatar');
+export const profileId = {}
 export const formsValidateConfig = {
   formSelector: '.popup__container',
   inputSelector: '.popup__text',
@@ -13,29 +18,3 @@ export const formsValidateConfig = {
   submitButtonSelector: '.popup__save',
   submitButtonErrorClass: 'popup__save_invalid',
 };
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];

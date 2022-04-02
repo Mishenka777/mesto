@@ -5,7 +5,7 @@ export default class FormValidator {
     this._inputs = [...this._form.querySelectorAll(this._settings.inputSelector)];
     this._button = form.querySelector(this._settings.submitButtonSelector);
   };
-   
+
   enableValidation() {
     this._setEventListeners(this._form);
   };
@@ -16,7 +16,7 @@ export default class FormValidator {
       this.setSubmitButtonState();
     }));
   };
-  
+
   _handleField(input) {
     if (input.validity.valid) {
       this._hideError(input)

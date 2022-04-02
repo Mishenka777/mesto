@@ -1,6 +1,7 @@
 .profile__items {
   display: flex;
   width: fit-content;
+  position: relative;
 }
 
 @media screen and (max-width: 950px) {
